@@ -1,0 +1,288 @@
+export interface Product {
+  id: number;
+  name: string;
+  category: string;
+  price: number;
+  originalPrice: number;
+  rating: number;
+  images: string[];
+  badge: string | null;
+  brand: string;
+  description: string;
+  features: string[];
+  specifications: { label: string; value: string }[];
+  inStock: boolean;
+}
+
+export const products: Product[] = [
+  {
+    id: 1,
+    name: "Samsung 55\" Smart TV",
+    category: "Electronics",
+    price: 699,
+    originalPrice: 899,
+    rating: 4.8,
+    images: [
+      "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1461151304267-38535e780c79?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1567690187548-f07b1d7bf5a9?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1571415060716-baff5f717c37?w=800&h=800&fit=crop",
+    ],
+    badge: "Best Seller",
+    brand: "Samsung",
+    description: "Experience stunning 4K resolution with vibrant colors and deep contrasts. This Samsung Smart TV features cutting-edge technology for an immersive viewing experience. With built-in streaming apps and voice control, entertainment is just a command away.",
+    features: [
+      "4K UHD Resolution",
+      "Smart Hub with Built-in Apps",
+      "Voice Control Compatible",
+      "HDR10+ Support",
+      "Ambient Mode",
+      "Game Mode for Low Latency",
+    ],
+    specifications: [
+      { label: "Screen Size", value: "55 inches" },
+      { label: "Resolution", value: "3840 x 2160 (4K)" },
+      { label: "Refresh Rate", value: "120Hz" },
+      { label: "Connectivity", value: "HDMI x3, USB x2, WiFi" },
+      { label: "Audio", value: "20W Dolby Digital Plus" },
+    ],
+    inStock: true,
+  },
+  {
+    id: 2,
+    name: "iPhone 15 Pro Max",
+    category: "Mobiles",
+    price: 1199,
+    originalPrice: 1299,
+    rating: 4.9,
+    images: [
+      "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1512054502232-10a0a035d672?w=800&h=800&fit=crop",
+    ],
+    badge: "New",
+    brand: "Apple",
+    description: "The most powerful iPhone ever. Featuring the A17 Pro chip, a titanium design, and the most advanced camera system in any smartphone. Capture stunning photos and videos with ProRAW and ProRes capabilities.",
+    features: [
+      "A17 Pro Chip",
+      "Titanium Design",
+      "48MP Main Camera",
+      "5x Optical Zoom",
+      "Action Button",
+      "USB-C Connectivity",
+    ],
+    specifications: [
+      { label: "Display", value: "6.7\" Super Retina XDR" },
+      { label: "Storage", value: "256GB / 512GB / 1TB" },
+      { label: "Battery", value: "Up to 29hrs Video Playback" },
+      { label: "Weight", value: "221g" },
+      { label: "OS", value: "iOS 17" },
+    ],
+    inStock: true,
+  },
+  {
+    id: 3,
+    name: "LG Washing Machine",
+    category: "Home Appliances",
+    price: 549,
+    originalPrice: 699,
+    rating: 4.6,
+    images: [
+      "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1617691930245-4f0eb84b4e1d?w=800&h=800&fit=crop",
+    ],
+    badge: "20% Off",
+    brand: "LG",
+    description: "Advanced front-load washing machine with AI-powered wash cycles. Features TurboWash technology for faster cleaning and Steam technology for better hygiene. Energy efficient with inverter motor.",
+    features: [
+      "AI DD Technology",
+      "TurboWash 360",
+      "Steam Wash",
+      "Smart Diagnosis",
+      "Inverter Motor",
+      "Allergy Care Cycle",
+    ],
+    specifications: [
+      { label: "Capacity", value: "9 kg" },
+      { label: "Spin Speed", value: "1400 RPM" },
+      { label: "Programs", value: "14 Wash Programs" },
+      { label: "Energy Rating", value: "A+++" },
+      { label: "Warranty", value: "10 Years Motor" },
+    ],
+    inStock: true,
+  },
+  {
+    id: 4,
+    name: "Sony Wireless Headphones",
+    category: "Electronics",
+    price: 299,
+    originalPrice: 349,
+    rating: 4.7,
+    images: [
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1545127398-14699f92334b?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&h=800&fit=crop",
+    ],
+    badge: null,
+    brand: "Sony",
+    description: "Industry-leading noise cancellation meets premium sound quality. The WH-1000XM5 delivers exceptional audio with up to 30 hours of battery life. Perfect for music lovers and professionals alike.",
+    features: [
+      "Industry-leading ANC",
+      "30hr Battery Life",
+      "Hi-Res Audio",
+      "Multipoint Connection",
+      "Speak-to-Chat",
+      "Fast Charging",
+    ],
+    specifications: [
+      { label: "Driver", value: "30mm" },
+      { label: "Frequency", value: "4Hz - 40,000Hz" },
+      { label: "Bluetooth", value: "5.2" },
+      { label: "Weight", value: "250g" },
+      { label: "Codecs", value: "LDAC, AAC, SBC" },
+    ],
+    inStock: true,
+  },
+  {
+    id: 5,
+    name: "Modern Office Chair",
+    category: "Furniture",
+    price: 189,
+    originalPrice: 249,
+    rating: 4.5,
+    images: [
+      "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=800&h=800&fit=crop",
+    ],
+    badge: "Popular",
+    brand: "ErgoMax",
+    description: "Ergonomic office chair designed for all-day comfort. Features adjustable lumbar support, breathable mesh back, and 4D armrests. Perfect for home offices and professional workspaces.",
+    features: [
+      "Ergonomic Design",
+      "Adjustable Lumbar Support",
+      "Breathable Mesh Back",
+      "4D Armrests",
+      "360° Swivel",
+      "Height Adjustable",
+    ],
+    specifications: [
+      { label: "Max Weight", value: "150 kg" },
+      { label: "Seat Height", value: "42-52 cm" },
+      { label: "Material", value: "Mesh & PU Leather" },
+      { label: "Base", value: "Aluminum Alloy" },
+      { label: "Warranty", value: "5 Years" },
+    ],
+    inStock: true,
+  },
+  {
+    id: 6,
+    name: "MacBook Pro 14\"",
+    category: "Electronics",
+    price: 1999,
+    originalPrice: 2199,
+    rating: 4.9,
+    images: [
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1629131726692-1accd0c53ce0?w=800&h=800&fit=crop",
+    ],
+    badge: "Hot",
+    brand: "Apple",
+    description: "Supercharged by M3 Pro chip for exceptional performance. Features Liquid Retina XDR display, up to 18 hours battery life, and studio-quality mics. Built for creative professionals.",
+    features: [
+      "M3 Pro Chip",
+      "Liquid Retina XDR Display",
+      "18hr Battery Life",
+      "MagSafe Charging",
+      "6-Speaker Sound System",
+      "1080p FaceTime Camera",
+    ],
+    specifications: [
+      { label: "Display", value: "14.2\" Liquid Retina XDR" },
+      { label: "Processor", value: "M3 Pro (12-core CPU)" },
+      { label: "Memory", value: "18GB / 36GB Unified" },
+      { label: "Storage", value: "512GB / 1TB / 2TB SSD" },
+      { label: "Ports", value: "3x Thunderbolt 4, HDMI, SD" },
+    ],
+    inStock: true,
+  },
+  {
+    id: 7,
+    name: "Samsung Galaxy S24",
+    category: "Mobiles",
+    price: 899,
+    originalPrice: 999,
+    rating: 4.7,
+    images: [
+      "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&h=800&fit=crop",
+    ],
+    badge: null,
+    brand: "Samsung",
+    description: "Galaxy AI transforms how you create, connect, and explore. Features a stunning Dynamic AMOLED display, powerful Snapdragon processor, and advanced camera system with AI enhancements.",
+    features: [
+      "Galaxy AI Features",
+      "120Hz Dynamic AMOLED",
+      "50MP Triple Camera",
+      "Snapdragon 8 Gen 3",
+      "IP68 Water Resistant",
+      "Wireless PowerShare",
+    ],
+    specifications: [
+      { label: "Display", value: "6.2\" FHD+ Dynamic AMOLED" },
+      { label: "Storage", value: "128GB / 256GB / 512GB" },
+      { label: "Battery", value: "4000mAh, 25W Fast Charge" },
+      { label: "RAM", value: "8GB" },
+      { label: "OS", value: "Android 14, One UI 6.1" },
+    ],
+    inStock: false,
+  },
+  {
+    id: 8,
+    name: "Philips Air Fryer",
+    category: "Home Appliances",
+    price: 149,
+    originalPrice: 199,
+    rating: 4.6,
+    images: [
+      "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1585237672814-8f85997c8748?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1612105632251-e2bdb6f622e5?w=800&h=800&fit=crop",
+    ],
+    badge: "25% Off",
+    brand: "Philips",
+    description: "Healthier cooking with up to 90% less fat. The Philips Air Fryer uses Rapid Air technology for crispy results without the oil. Large capacity basket perfect for family meals.",
+    features: [
+      "Rapid Air Technology",
+      "90% Less Fat",
+      "Digital Touch Screen",
+      "7 Preset Programs",
+      "Keep Warm Function",
+      "Dishwasher Safe Parts",
+    ],
+    specifications: [
+      { label: "Capacity", value: "4.1 Liters" },
+      { label: "Power", value: "1500W" },
+      { label: "Temperature", value: "80°C - 200°C" },
+      { label: "Timer", value: "60 Minutes" },
+      { label: "Dimensions", value: "36 x 29 x 32 cm" },
+    ],
+    inStock: true,
+  },
+];
+
+export const filters = ["All", "Electronics", "Mobiles", "Home Appliances", "Furniture"];
+
+export const getProductById = (id: number): Product | undefined => {
+  return products.find((p) => p.id === id);
+};
