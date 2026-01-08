@@ -6,11 +6,13 @@ import BrandsSection from "@/components/BrandsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import CartSidebar from "@/components/CartSidebar";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
+      <CartSidebar />
       <main>
         <HeroSection />
         <CategoriesSection />

@@ -1,100 +1,31 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingCart, Heart, Eye, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const filters = ["All", "Electronics", "Mobiles", "Home Appliances", "Furniture"];
-
-const products = [
-  {
-    id: 1,
-    name: "Samsung 55\" Smart TV",
-    category: "Electronics",
-    price: 699,
-    originalPrice: 899,
-    rating: 4.8,
-    image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&h=400&fit=crop",
-    badge: "Best Seller",
-  },
-  {
-    id: 2,
-    name: "iPhone 15 Pro Max",
-    category: "Mobiles",
-    price: 1199,
-    originalPrice: 1299,
-    rating: 4.9,
-    image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=400&fit=crop",
-    badge: "New",
-  },
-  {
-    id: 3,
-    name: "LG Washing Machine",
-    category: "Home Appliances",
-    price: 549,
-    originalPrice: 699,
-    rating: 4.6,
-    image: "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=400&h=400&fit=crop",
-    badge: "20% Off",
-  },
-  {
-    id: 4,
-    name: "Sony Wireless Headphones",
-    category: "Electronics",
-    price: 299,
-    originalPrice: 349,
-    rating: 4.7,
-    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop",
-    badge: null,
-  },
-  {
-    id: 5,
-    name: "Modern Office Chair",
-    category: "Furniture",
-    price: 189,
-    originalPrice: 249,
-    rating: 4.5,
-    image: "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=400&h=400&fit=crop",
-    badge: "Popular",
-  },
-  {
-    id: 6,
-    name: "MacBook Pro 14\"",
-    category: "Electronics",
-    price: 1999,
-    originalPrice: 2199,
-    rating: 4.9,
-    image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=400&fit=crop",
-    badge: "Hot",
-  },
-  {
-    id: 7,
-    name: "Samsung Galaxy S24",
-    category: "Mobiles",
-    price: 899,
-    originalPrice: 999,
-    rating: 4.7,
-    image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400&h=400&fit=crop",
-    badge: null,
-  },
-  {
-    id: 8,
-    name: "Philips Air Fryer",
-    category: "Home Appliances",
-    price: 149,
-    originalPrice: 199,
-    rating: 4.6,
-    image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&h=400&fit=crop",
-    badge: "25% Off",
-  },
-];
+import { products, filters } from "@/data/products";
+import { useCart } from "@/context/CartContext";
+import { toast } from "sonner";
 
 const ProductsSection = () => {
   const [activeFilter, setActiveFilter] = useState("All");
+  const navigate = useNavigate();
+  const { addToCart } = useCart();
 
   const filteredProducts =
     activeFilter === "All"
       ? products
       : products.filter((p) => p.category === activeFilter);
+
+  const handleAddToCart = (e: React.MouseEvent, product: typeof products[0]) => {
+    e.stopPropagation();
+    addToCart(product);
+    toast.success(`${product.name} added to cart!`);
+  };
+
+  const handleViewProduct = (productId: number) => {
+    navigate(`/product/${productId}`);
+  };
 
   return (
     <section id="products" className="py-20 lg:py-28 bg-secondary/30">
@@ -156,12 +87,13 @@ const ProductsSection = () => {
                 <motion.div
                   whileHover={{ y: -8 }}
                   transition={{ duration: 0.3 }}
-                  className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300"
+                  className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer"
+                  onClick={() => handleViewProduct(product.id)}
                 >
                   {/* Image Container */}
                   <div className="relative aspect-square overflow-hidden bg-secondary/50">
                     <img
-                      src={product.image}
+                      src={product.images[0]}
                       alt={product.name}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
@@ -178,6 +110,7 @@ const ProductsSection = () => {
                       <motion.button
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
+                        onClick={(e) => e.stopPropagation()}
                         className="w-10 h-10 bg-card rounded-full shadow-md flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
                       >
                         <Heart className="w-5 h-5" />
@@ -185,6 +118,10 @@ const ProductsSection = () => {
                       <motion.button
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleViewProduct(product.id);
+                        }}
                         className="w-10 h-10 bg-card rounded-full shadow-md flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
                       >
                         <Eye className="w-5 h-5" />
@@ -193,7 +130,11 @@ const ProductsSection = () => {
 
                     {/* Add to Cart Overlay */}
                     <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-navy-dark/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                      <Button variant="accent" className="w-full">
+                      <Button
+                        variant="accent"
+                        className="w-full"
+                        onClick={(e) => handleAddToCart(e, product)}
+                      >
                         <ShoppingCart className="w-4 h-4 mr-2" />
                         Add to Cart
                       </Button>
